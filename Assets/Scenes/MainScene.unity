@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &68302395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68302397}
+  - component: {fileID: 68302396}
+  m_Layer: 0
+  m_Name: DatabaseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &68302396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68302395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df05c5a709f29ce4cb72e416aec1f883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  databaseURL: https://solarsystem-43bc6-default-rtdb.firebaseio.com/
+--- !u!4 &68302397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68302395}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &372481857
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +680,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!1 &2125579015
 GameObject:
@@ -5689,6 +5734,7 @@ GameObject:
   - component: {fileID: 1235834873897573316}
   - component: {fileID: 2295946808383651293}
   - component: {fileID: 2295946808383651292}
+  - component: {fileID: 2295946808383651294}
   m_Layer: 0
   m_Name: Uranus
   m_TagString: Celestial
@@ -5853,6 +5899,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2295946808383651294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291840897770936881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!198 &2441348009736863670
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -10692,6 +10757,7 @@ GameObject:
   - component: {fileID: 285654931893182771}
   - component: {fileID: 2535691919490990740}
   - component: {fileID: 2535691919490990739}
+  - component: {fileID: 2535691919490990741}
   m_Layer: 0
   m_Name: Mercury
   m_TagString: Celestial
@@ -10791,7 +10857,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 20
+  m_Time: 10
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -10889,6 +10955,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2535691919490990741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532822126766112734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!4 &2535743446106012730
 Transform:
   m_ObjectHideFlags: 0
@@ -11099,6 +11184,7 @@ GameObject:
   - component: {fileID: 7380419133006086273}
   - component: {fileID: 7380419133006086275}
   - component: {fileID: 7380419133006086274}
+  - component: {fileID: 7380419133006086276}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Celestial
@@ -20772,6 +20858,7 @@ GameObject:
   - component: {fileID: 8849945896335224520}
   - component: {fileID: 8849945896335224522}
   - component: {fileID: 8849945896335224521}
+  - component: {fileID: 8849945896335224523}
   m_Layer: 0
   m_Name: Neptune
   m_TagString: Celestial
@@ -25786,6 +25873,7 @@ GameObject:
   - component: {fileID: 2088359899986599746}
   - component: {fileID: 5082327648008253921}
   - component: {fileID: 5082327648008253920}
+  - component: {fileID: 5082327648008253922}
   m_Layer: 0
   m_Name: Jupiter
   m_TagString: Celestial
@@ -25933,6 +26021,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5082327648008253922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082327648008253919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!1 &5083243767117527521
 GameObject:
   m_ObjectHideFlags: 0
@@ -35700,6 +35807,7 @@ GameObject:
   - component: {fileID: 8078028455998730908}
   - component: {fileID: 8078028455998730910}
   - component: {fileID: 8078028455998730909}
+  - component: {fileID: 8078028455998730911}
   m_Layer: 0
   m_Name: Venus
   m_TagString: Celestial
@@ -35869,6 +35977,7 @@ GameObject:
   - component: {fileID: 1426409978698182453}
   - component: {fileID: 5472393430355286618}
   - component: {fileID: 5472393430355286617}
+  - component: {fileID: 5472393430355286619}
   m_Layer: 0
   m_Name: Moon
   m_TagString: Celestial
@@ -36066,6 +36175,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5472393430355286619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468624513528103036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!4 &5472413729608168256
 Transform:
   m_ObjectHideFlags: 0
@@ -36241,6 +36369,7 @@ GameObject:
   - component: {fileID: 4098412887120911641}
   - component: {fileID: 5906610812790024823}
   - component: {fileID: 5906610812790024822}
+  - component: {fileID: 5906610812790024824}
   m_Layer: 0
   m_Name: Saturn
   m_TagString: Celestial
@@ -36442,6 +36571,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5906610812790024824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903099468995099165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!4 &5906863943888706611
 Transform:
   m_ObjectHideFlags: 0
@@ -41428,6 +41576,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7380419133006086276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2728902487395282523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!135 &8078028455998730908
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -41589,6 +41756,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8078028455998730911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5337791025159561219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!1 &8404413175971165386
 GameObject:
   m_ObjectHideFlags: 0
@@ -41619,6 +41805,7 @@ GameObject:
   - component: {fileID: 3070344512319444163}
   - component: {fileID: 8406429544178425672}
   - component: {fileID: 8406429544178425671}
+  - component: {fileID: 8406429544178425673}
   m_Layer: 0
   m_Name: Mars
   m_TagString: Celestial
@@ -41801,6 +41988,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8406429544178425673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404457516556135074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!4 &8410012984312788454
 Transform:
   m_ObjectHideFlags: 0
@@ -46851,6 +47057,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8849945896335224523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3391905887143621677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9757d3fe4820d41b200c2ab43530bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    Name: 
+    Mass: 0
+    Radius: 0
+    DistanceToSun: 0
+    TangentialVelocity: 0
+    InitialGravitationalForce: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -46869,3 +47094,4 @@ SceneRoots:
   - {fileID: 3393602836519878081}
   - {fileID: 1507119807}
   - {fileID: 432679097}
+  - {fileID: 68302397}

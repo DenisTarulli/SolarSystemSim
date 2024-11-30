@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SolarSystem : MonoBehaviour
 {
     private readonly float G = 100f;
-    private GameObject[] celestials;
+    private GameObject[] _celestials;
 
     private void Start()
     {
-        celestials = GameObject.FindGameObjectsWithTag("Celestial");
+        _celestials = GameObject.FindGameObjectsWithTag("Celestial");
 
         InitialVelocity();
     }
@@ -21,9 +19,9 @@ public class SolarSystem : MonoBehaviour
 
     private void Gravity()
     {
-        foreach (GameObject a in celestials)
+        foreach (GameObject a in _celestials)
         {
-            foreach (GameObject b in celestials)
+            foreach (GameObject b in _celestials)
             {
                 if (!a.Equals(b))
                 {
@@ -31,8 +29,13 @@ public class SolarSystem : MonoBehaviour
                     float m2 = b.GetComponent<Rigidbody>().mass;
                     float r = Vector3.Distance(a.transform.position, b.transform.position);
 
-                    a.GetComponent<Rigidbody>().AddForce((b.transform.position - a.transform.position).normalized * 
-                        (G * (m1 * m2) / (r * r)));
+                    Vector3 forceToApply = (b.transform.position - a.transform.position).normalized *
+                        (G * (m1 * m2) / (r * r));
+
+                    if (a.name != "Sun" && b.name == "Sun" && a.GetComponent<Celestial>().stats.InitialGravitationalForce == 0f)
+                        a.GetComponent<Celestial>().stats.InitialGravitationalForce = forceToApply.magnitude;
+
+                    a.GetComponent<Rigidbody>().AddForce(forceToApply);
                 }
             }
         }
@@ -40,9 +43,9 @@ public class SolarSystem : MonoBehaviour
 
     private void InitialVelocity()
     {
-        foreach (GameObject a in celestials)
+        foreach (GameObject a in _celestials)
         {
-            foreach (GameObject b in celestials)
+            foreach (GameObject b in _celestials)
             {
                 if (!a.Equals(b))
                 {
@@ -51,7 +54,12 @@ public class SolarSystem : MonoBehaviour
                     a.transform.LookAt(b.transform);
                     a.transform.GetChild(1).LookAt(b.transform);
 
-                    a.GetComponent<Rigidbody>().velocity += a.transform.right * Mathf.Sqrt((G * m2) / r);
+                    Vector3 newVelocity = a.transform.right * Mathf.Sqrt((G * m2) / r);
+
+                    if (a.name != "Sun" && b.name == "Sun")
+                        a.GetComponent<Celestial>().stats.TangentialVelocity = newVelocity.magnitude;
+
+                    a.GetComponent<Rigidbody>().velocity += newVelocity;
                 }
             }
         }
