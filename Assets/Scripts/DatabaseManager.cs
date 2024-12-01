@@ -7,7 +7,7 @@ using System.Collections;
 
 public class DatabaseManager : MonoBehaviour
 {
-    [SerializeField] private string databaseURL;
+    [SerializeField] private string _databaseURL;
 
     private void LogMessage(string title, string message)
     {
@@ -20,7 +20,7 @@ public class DatabaseManager : MonoBehaviour
 
     public void SaveData(CelestialStats stats)
     {
-        RestClient.Put(databaseURL + "/" + stats.Name + ".json", stats);
+        RestClient.Put(_databaseURL + "/" + stats.Name + ".json", stats);
         Debug.Log($"Planet {stats.Name} values have been saved succesfully");
     }
     

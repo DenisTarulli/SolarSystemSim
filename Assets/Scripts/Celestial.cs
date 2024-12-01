@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Celestial : MonoBehaviour
 {
-    [SerializeField] public CelestialStats stats;
-    private DatabaseManager databaseManager;
-    private Rigidbody rb;
+    [SerializeField] public CelestialStats Stats;
+    private DatabaseManager _databaseManager;
+    private Rigidbody _rb;
 
     private void Awake()
     {
-        stats = new CelestialStats();
+        Stats = new CelestialStats();
 
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
 
-        databaseManager = FindObjectOfType<DatabaseManager>();
+        _databaseManager = FindObjectOfType<DatabaseManager>();
 
         SetStats();
     }
@@ -20,19 +20,19 @@ public class Celestial : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            databaseManager.SaveData(stats);
+            _databaseManager.SaveData(Stats);
     }
 
     private void SetStats()
     {
-        stats.Name = gameObject.name;
+        Stats.Name = gameObject.name;
 
         if (gameObject.name == "Earth")
-            stats.Mass = 1f;       
+            Stats.Mass = 1f;       
         else
-            stats.Mass = rb.mass;
+            Stats.Mass = _rb.mass;
 
-        stats.Radius = transform.localScale.x;
-        stats.DistanceToSun = transform.position.x;
+        Stats.Radius = transform.localScale.x;
+        Stats.DistanceToSun = transform.position.x;
     }
 }

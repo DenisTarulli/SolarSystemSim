@@ -15,32 +15,47 @@ public class CameraInfo
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField] private CinemachineFreeLook freeLookCamera;
-    [SerializeField] private List<CameraInfo> listOfCameraTargets;
+    [SerializeField] private CinemachineFreeLook _freeLookCamera;
+    [SerializeField] private List<CameraInfo> _listOfCameraTargets;
+    [SerializeField] private string _initialTarget;
+    private StatsUI _statsUI;
+
+    private void Awake()
+    {
+        _statsUI = FindObjectOfType<StatsUI>();
+    }
+
+    private void Start()
+    {
+        SetTarget(_initialTarget);
+    }
 
     public void SetTarget(string newTarget)
     {
-        foreach (var target in listOfCameraTargets)
+        foreach (var target in _listOfCameraTargets)
         {
             if (target.Name == newTarget)
+            {
                 SetTargetValues(target);
+                _statsUI.SetCurrentCelestialStats(target.Planet.GetComponent<Celestial>().Stats);
+            }
         }
     }
 
     private void SetTargetValues(CameraInfo cameraInfo)
     {
-        freeLookCamera.Follow = cameraInfo.Planet;
-        freeLookCamera.LookAt = cameraInfo.Planet;
+        _freeLookCamera.Follow = cameraInfo.Planet;
+        _freeLookCamera.LookAt = cameraInfo.Planet;
 
-        for (int i = 0; i < freeLookCamera.m_Orbits.Length; i++)
+        for (int i = 0; i < _freeLookCamera.m_Orbits.Length; i++)
         {            
-            freeLookCamera.m_Orbits[i].m_Height = cameraInfo.OrbitHeight;
-            freeLookCamera.m_Orbits[i].m_Radius = cameraInfo.OrbitRadius;
+            _freeLookCamera.m_Orbits[i].m_Height = cameraInfo.OrbitHeight;
+            _freeLookCamera.m_Orbits[i].m_Radius = cameraInfo.OrbitRadius;
         }
     }
 
     private void AddNewTarget(CameraInfo cameraInfo)
     {
-        listOfCameraTargets.Add(cameraInfo);
+        _listOfCameraTargets.Add(cameraInfo);
     }
 }

@@ -32,8 +32,8 @@ public class SolarSystem : MonoBehaviour
                     Vector3 forceToApply = (b.transform.position - a.transform.position).normalized *
                         (G * (m1 * m2) / (r * r));
 
-                    if (a.name != "Sun" && b.name == "Sun" && a.GetComponent<Celestial>().stats.InitialGravitationalForce == 0f)
-                        a.GetComponent<Celestial>().stats.InitialGravitationalForce = forceToApply.magnitude;
+                    if (a.name != "Sun" && b.name == "Sun" && a.GetComponent<Celestial>().Stats.InitialGravitationalForce == 0f)
+                        a.GetComponent<Celestial>().Stats.InitialGravitationalForce = forceToApply.magnitude;
 
                     a.GetComponent<Rigidbody>().AddForce(forceToApply);
                 }
@@ -57,7 +57,7 @@ public class SolarSystem : MonoBehaviour
                     Vector3 newVelocity = a.transform.right * Mathf.Sqrt((G * m2) / r);
 
                     if (a.name != "Sun" && b.name == "Sun")
-                        a.GetComponent<Celestial>().stats.TangentialVelocity = newVelocity.magnitude;
+                        a.GetComponent<Celestial>().Stats.TangentialVelocity = newVelocity.magnitude;
 
                     a.GetComponent<Rigidbody>().velocity += newVelocity;
                 }
