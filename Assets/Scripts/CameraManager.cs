@@ -18,6 +18,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private CinemachineFreeLook _freeLookCamera;
     [SerializeField] private List<CameraInfo> _listOfCameraTargets;
     [SerializeField] private string _initialTarget;
+    [SerializeField] private float _rotationMultiplier;
     private StatsUI _statsUI;
 
     private void Awake()
@@ -28,6 +29,16 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         SetTarget(_initialTarget);
+    }
+
+    private void Update()
+    {
+        CameraRotation();
+    }
+
+    private void CameraRotation()
+    {
+        _freeLookCamera.m_XAxis.Value += _rotationMultiplier * Time.deltaTime;
     }
 
     public void SetTarget(string newTarget)
