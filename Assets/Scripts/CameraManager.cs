@@ -1,8 +1,8 @@
 using Cinemachine;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
 
 [Serializable]
 public class CameraInfo
@@ -17,6 +17,7 @@ public class CameraManager : MonoBehaviour
 {
     [SerializeField] private CinemachineFreeLook _freeLookCamera;
     [SerializeField] private List<CameraInfo> _listOfCameraTargets;
+    [SerializeField] private TMP_InputField _addedCelestialName;
     [SerializeField] private string _initialTarget;
     [SerializeField] private float _rotationMultiplier;
     private StatsUI _statsUI;
@@ -41,6 +42,24 @@ public class CameraManager : MonoBehaviour
         _freeLookCamera.m_XAxis.Value += _rotationMultiplier * Time.deltaTime;
     }
 
+    public void AddNewTarget(string newName, Transform newObj, int newHeight, int newRadius)
+    {
+        CameraInfo newTarget = new()
+        {
+            Name = newName,
+            Planet = newObj,
+            OrbitHeight = newHeight,
+            OrbitRadius = newRadius
+        };
+
+        _listOfCameraTargets.Add(newTarget);
+    }
+
+    public void SetAddedTarget()
+    {
+        SetTarget(_addedCelestialName.text);
+    }
+
     public void SetTarget(string newTarget)
     {
         foreach (var target in _listOfCameraTargets)
@@ -48,7 +67,15 @@ public class CameraManager : MonoBehaviour
             if (target.Name == newTarget)
             {
                 SetTargetValues(target);
-                _statsUI.SetCurrentCelestialStats(target.Planet.GetComponent<Celestial>().Stats);
+
+                if (target.Planet.TryGetComponent<Celestial>(out Celestial component))
+                {
+                    _statsUI.SetCurrentCelestialStats(component.Stats);
+                }
+                else
+                {
+                    _statsUI.SetCurrentCelestialStats(target.Planet.GetComponent<NewCelestial>().Stats);
+                }
             }
         }
     }

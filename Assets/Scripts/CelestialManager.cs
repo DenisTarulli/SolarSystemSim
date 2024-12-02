@@ -10,6 +10,8 @@ public class CelestialManager : MonoBehaviour
     [SerializeField] private TMP_InputField _mass;
     [SerializeField] private TMP_InputField _radius;
     [SerializeField] private TMP_InputField _distance;
+    [SerializeField] private CameraManager _cameraManager;
+    private readonly int _cameraRadiusMultiplier = 3;
     private SolarSystem _solarSystem;
 
     private void Start()
@@ -19,7 +21,6 @@ public class CelestialManager : MonoBehaviour
 
     public void CreateCelestial()
     {
-
         float newDistance = float.Parse(_distance.text);
         Vector3 spawnPos = new(newDistance, 0f, 0f);
         GameObject newCelestial = Instantiate(_celestialPrefab, spawnPos, Quaternion.identity);
@@ -41,5 +42,7 @@ public class CelestialManager : MonoBehaviour
         stats.Radius = newRadius;
 
         _solarSystem.AddCelestial(newCelestial);
+
+        _cameraManager.AddNewTarget(stats.Name, newCelestial.transform, 15, Mathf.CeilToInt(stats.Radius * _cameraRadiusMultiplier));
     }
 }

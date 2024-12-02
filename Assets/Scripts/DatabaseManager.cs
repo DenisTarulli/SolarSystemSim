@@ -9,6 +9,12 @@ public class DatabaseManager : MonoBehaviour
 {
     [SerializeField] private string _databaseURL;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Delete))
+            DeleteData();
+    }
+
     private void LogMessage(string title, string message)
     {
 #if UNITY_EDITOR
@@ -23,7 +29,7 @@ public class DatabaseManager : MonoBehaviour
         RestClient.Put(_databaseURL + "/" + stats.Name + ".json", stats);
         Debug.Log($"Planet {stats.Name} values have been saved succesfully");
     }
-    
+
     //public void ReadData()
     //{
     //    RestClient.Get<CelestialStats>(databaseURL + "/")
@@ -76,21 +82,18 @@ public class DatabaseManager : MonoBehaviour
     //    shotsToDisplayList.Clear();
     //}
 
-    //public void DeleteData()
-    //{
-    //    RestClient.Delete(databaseURL + ".json", (err, res) =>
-    //    {
-    //        if (err != null)
-    //        {
-    //            this.LogMessage("Error", err.Message);
-    //            DeleteAllShotsContainers();
-    //        }
-    //        else
-    //        {
-    //            this.LogMessage("Success", "Status: " + res.StatusCode.ToString() + "\nData cleared");
-    //            shotInfo.ResetIndex();
-    //            shotsToDisplayList.Clear();
-    //        }
-    //    });
-    //}
+    public void DeleteData()
+    {
+        RestClient.Delete(_databaseURL + ".json", (err, res) =>
+        {
+            if (err != null)
+            {
+                this.LogMessage("Error", err.Message);
+            }
+            else
+            {
+                this.LogMessage("Success", "Status: " + res.StatusCode.ToString() + "\nData cleared");
+            }
+        });
+    }
 }
